@@ -102,13 +102,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-black text-gray-400 py-6 px-4 flex flex-col md:flex-row justify-between items-center border-t border-gray-800">
-        <p>&copy; 2024 CSE Freshers Party. All rights reserved.</p>
-        <Link to="/about" className="text-green-400 hover:underline mt-4 md:mt-0">
-          About
-        </Link>
-      </footer>
+   
     </div>
   );
 };
