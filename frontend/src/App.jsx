@@ -49,6 +49,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#0B0C10] via-[#1F2833] to-[#45A29E] text-white relative overflow-hidden">
+      {/* Background Floating Elements */}
       <FloatingShape color="bg-indigo-500" size="w-64 h-64" top="-5%" left="10%" delay={0} />
       <FloatingShape color="bg-cyan-500" size="w-48 h-48" top="70%" left="80%" delay={5} />
       <FloatingShape color="bg-purple-500" size="w-32 h-32" top="40%" left="-10%" delay={2} />
@@ -61,69 +62,48 @@ function App() {
           <Route path="/about" element={<About />} />
 
           {/* Protected Routes */}
-          <Route
-            path="/dashboard"
-            element={
-              <ProtectedRoute>
-                <DashboardPage />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/student-form"
-            element={
-              <ProtectedRoute>
-                <StudentForm />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/admin"
-            element={
-              user?.email === ADMIN_EMAIL ? (
-                <AdminPanel />
-              ) : (
-                <Navigate to="/" replace />
-              )
-            }
-          />
+          <Route path="/dashboard" element={
+            <ProtectedRoute>
+              <DashboardPage />
+            </ProtectedRoute>
+          } />
+          <Route path="/student-form" element={
+            <ProtectedRoute>
+              <StudentForm />
+            </ProtectedRoute>
+          } />
+          <Route path="/admin" element={
+            user?.email === ADMIN_EMAIL ? (
+              <AdminPanel />
+            ) : (
+              <Navigate to="/" replace />
+            )
+          } />
 
           {/* Auth Routes */}
-          <Route
-            path="/signup"
-            element={
-              <RedirectAuthenticatedUser>
-                <SignUpPage />
-              </RedirectAuthenticatedUser>
-            }
-          />
-          <Route
-            path="/login"
-            element={
-              <RedirectAuthenticatedUser>
-                <LoginPage />
-              </RedirectAuthenticatedUser>
-            }
-          />
+          <Route path="/signup" element={
+            <RedirectAuthenticatedUser>
+              <SignUpPage />
+            </RedirectAuthenticatedUser>
+          } />
+          <Route path="/login" element={
+            <RedirectAuthenticatedUser>
+              <LoginPage />
+            </RedirectAuthenticatedUser>
+          } />
           <Route path="/verify-email" element={<EmailVerificationPage />} />
-          <Route
-            path="/forgot-password"
-            element={
-              <RedirectAuthenticatedUser>
-                <ForgotPasswordPage />
-              </RedirectAuthenticatedUser>
-            }
-          />
-          <Route
-            path="/reset-password/:token"
-            element={
-              <RedirectAuthenticatedUser>
-                <ResetPasswordPage />
-              </RedirectAuthenticatedUser>
-            }
-          />
+          <Route path="/forgot-password" element={
+            <RedirectAuthenticatedUser>
+              <ForgotPasswordPage />
+            </RedirectAuthenticatedUser>
+          } />
+          <Route path="/reset-password/:token" element={
+            <RedirectAuthenticatedUser>
+              <ResetPasswordPage />
+            </RedirectAuthenticatedUser>
+          } />
 
-          {/* Catch-all */}
+          {/* 404 Page */}
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Layout>
