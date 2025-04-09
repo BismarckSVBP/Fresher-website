@@ -1,14 +1,16 @@
-// components/Layout.tsx
+// components/Layout.jsx
 import Navbar from './Navbar';
 import Footer from './Footer';
 
-const Layout = ({ children }: { children: React.ReactNode }) => {
+const Layout = ({ children }) => {
   return (
-    <>
+    <div className="flex flex-col min-h-screen">
       <Navbar />
-      <main className="pt-16 px-4 min-h-[calc(100vh-8rem)]">{children}</main>
+      <main className="flex-grow pt-16 px-4">
+        {children}
+      </main>
       <Footer />
-    </>
+    </div>
   );
 };
 
