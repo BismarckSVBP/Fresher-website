@@ -25,7 +25,8 @@ const developers = [
         image: "/devang.jpg",
         linkedin: "https://linkedin.com/in/priya-sharma",
         isMain: false,
-    },{
+    },
+     {
         name: "Umang Yadav",
         title: "UI Designer & Coder",
         role: "Creative Designer",
@@ -52,7 +53,7 @@ const developers = [
         linkedin: "https://linkedin.com/in/neha-singh",
         isMain: false,
     },
-    
+   
     {
         name: "Yashvardhan Ojha",
         title: "JavaScript Enthusiast",
@@ -75,7 +76,7 @@ const developers = [
 
 const About = () => {
     const mainDev = developers.find((dev) => dev.isMain);
-    const juniorDevs = developers.filter((dev) => !dev.isMain).slice(0, 7); // Only 7 junior devs
+    const juniorDevs = developers.filter((dev) => !dev.isMain).slice(0, 7);
 
     return (
         <div className="w-full max-w-6xl bg-gray-900 bg-opacity-80 backdrop-blur-lg rounded-2xl shadow-2xl border border-gray-800 p-8">
@@ -87,7 +88,11 @@ const About = () => {
             {mainDev && (
                 <div className="bg-gradient-to-br from-emerald-600 to-green-500 text-white rounded-xl p-8 text-center mb-10 shadow-xl">
                     <div className="w-28 h-28 rounded-full overflow-hidden mx-auto border-4 border-white mb-4">
-                        <img src={mainDev.image} alt={mainDev.name} className="w-full h-full object-cover" />
+                        <img
+                            src={mainDev.image}
+                            alt={mainDev.name}
+                            className="w-full h-full object-cover"
+                        />
                     </div>
                     <h2 className="text-2xl font-bold">{mainDev.name}</h2>
                     <p className="text-sm">{mainDev.role}</p>
@@ -111,7 +116,11 @@ const About = () => {
                         className="bg-gray-800 bg-opacity-90 text-gray-200 rounded-xl p-6 text-center border border-gray-700 hover:scale-105 transition shadow-md"
                     >
                         <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-green-400 mb-3 mx-auto">
-                            <img src={dev.image} alt={dev.name} className="w-full h-full object-cover" />
+                            <img
+                                src={dev.image}
+                                alt={dev.name}
+                                className="w-full h-full object-cover"
+                            />
                         </div>
                         <h3 className="text-lg font-semibold">{dev.name}</h3>
                         <p className="text-sm text-gray-400">{dev.year}</p>
@@ -121,7 +130,10 @@ const About = () => {
 
             {/* Footer */}
             <div className="mt-10 text-center">
-                <a href="/contact-us" className="text-sm text-gray-400 hover:text-white underline">
+                <a
+                    href="/contact-us"
+                    className="text-sm text-gray-400 hover:text-white underline"
+                >
                     Contact the team →
                 </a>
             </div>
