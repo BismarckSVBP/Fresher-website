@@ -1,6 +1,6 @@
 const developers = [
     {
-        name: "Abhay",
+        name: "Abhay Kumar Kasaudhan",
         title: "Backend Developer and Coder",
         role: "CSE B.Tech 2nd Year",
         year: "Main Developer",
