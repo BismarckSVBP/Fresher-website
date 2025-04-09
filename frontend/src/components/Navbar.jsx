@@ -1,10 +1,10 @@
-// components/Navbar.tsx
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
@@ -12,7 +12,7 @@ const Navbar = () => {
     { to: '/', label: 'Home' },
     { to: '/about', label: 'About' },
     { to: '/registration', label: 'Register' },
-    { to: '/contact-us', label: 'Contact' }, // updated route
+    { to: '/contact-us', label: 'Contact' },
   ];
 
   return (
@@ -28,7 +28,9 @@ const Navbar = () => {
             <Link
               key={link.to}
               to={link.to}
-              className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-white transition"
+              className={`text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-white transition ${
+                location.pathname === link.to ? 'font-semibold underline underline-offset-4' : ''
+              }`}
             >
               {link.label}
             </Link>
@@ -51,7 +53,9 @@ const Navbar = () => {
               key={link.to}
               to={link.to}
               onClick={() => setIsOpen(false)}
-              className="block text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-white transition"
+              className={`block text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-white transition ${
+                location.pathname === link.to ? 'font-semibold underline underline-offset-4' : ''
+              }`}
             >
               {link.label}
             </Link>
