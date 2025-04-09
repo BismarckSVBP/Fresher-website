@@ -63,7 +63,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 // Routes
-app.use("/api", authRoutes); // Optional: Use "/api" to avoid conflicts
+app.use("/api/auth", authRoutes); // Optional: Use "/api" to avoid conflicts
 
 // Connect to database once
 connectDB().then(() => console.log("✅ Database connected successfully!")).catch(err => {
