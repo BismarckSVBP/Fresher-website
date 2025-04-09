@@ -1,3 +1,4 @@
+// App.tsx (updated)
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { useAuthStore } from "./store/authStore";
@@ -15,6 +16,7 @@ import StudentForm from "./pages/StudentForm";
 import AdminPanel from "./pages/AdminPanel";
 import About from "./pages/About";
 import Home from "./pages/Home";
+import NotFoundPage from "./pages/NotFoundPage";
 
 import LoadingSpinner from "./components/LoadingSpinner";
 import { Toaster } from "react-hot-toast";
@@ -58,12 +60,10 @@ function App() {
         from-[#0B0C10] via-[#1F2833] to-[#45A29E] 
         text-white relative overflow-hidden"
     >
-      {/* Floating background shapes */}
       <FloatingShape color="bg-indigo-500" size="w-64 h-64" top="-5%" left="10%" delay={0} />
       <FloatingShape color="bg-cyan-500" size="w-48 h-48" top="70%" left="80%" delay={5} />
       <FloatingShape color="bg-purple-500" size="w-32 h-32" top="40%" left="-10%" delay={2} />
 
-      {/* Show navbar except for login/signup/verify/reset/forgot */}
       {!["/login", "/signup", "/verify-email", "/forgot-password"].includes(location.pathname) && (
         <Navbar />
       )}
@@ -134,8 +134,8 @@ function App() {
             }
           />
 
-          {/* Catch-all */}
-          <Route path="*" element={<Navigate to="/" replace />} />
+          {/* Catch-all Not Found Route */}
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </div>
 
