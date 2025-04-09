@@ -1,9 +1,9 @@
-
 import { Link } from 'react-router-dom';
 
 const Home = () => {
   return (
-    <div className="min-h-screen bg-[#0f172a] text-white relative overflow-hidden">
+    <div className="min-h-screen bg-[#0f172a] text-white relative overflow-hidden rounded-2xl">
+
       {/* Floating Bubbles */}
       {[...Array(20)].map((_, i) => (
         <div
@@ -19,7 +19,7 @@ const Home = () => {
       ))}
 
       {/* Hero Section */}
-      <section className="h-screen flex items-center justify-center relative z-10 text-center px-4 animate-fade-in-up">
+      <section className="h-screen flex items-center justify-center relative z-10 text-center px-4 animate-fade-in-up rounded-2xl">
         <div>
           <h1 className="text-5xl md:text-6xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 to-green-400 drop-shadow-lg">
             CSE Freshers Party 2025
@@ -37,7 +37,7 @@ const Home = () => {
       </section>
 
       {/* Event Highlights */}
-      <section className="py-24 px-4 bg-gray-900 bg-opacity-80 backdrop-blur-md">
+      <section className="py-24 px-4 bg-gray-900 bg-opacity-80 backdrop-blur-md rounded-2xl">
         <h2 className="text-4xl font-bold text-center mb-16 text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-300">
           Event Highlights
         </h2>
@@ -63,7 +63,7 @@ const Home = () => {
       </section>
 
       {/* Event Timeline */}
-      <section className="py-24 px-4 bg-gray-800 bg-opacity-80 backdrop-blur-md">
+      <section className="py-24 px-4 bg-gray-800 bg-opacity-80 backdrop-blur-md rounded-2xl">
         <h2 className="text-4xl font-bold text-center mb-16 text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-green-300">
           Event Timeline
         </h2>
@@ -87,7 +87,7 @@ const Home = () => {
       </section>
 
       {/* Contact Section */}
-      <section className="py-24 px-4 bg-gray-900 bg-opacity-90 backdrop-blur-md">
+      <section className="py-24 px-4 bg-gray-900 bg-opacity-90 backdrop-blur-md rounded-2xl">
         <div className="max-w-xl mx-auto text-center">
           <h2 className="text-4xl font-bold mb-10 text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-green-400">
             Contact Us
@@ -101,8 +101,6 @@ const Home = () => {
           </Link>
         </div>
       </section>
-
-   
     </div>
   );
 };
