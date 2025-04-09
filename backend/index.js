@@ -51,14 +51,14 @@ if (!process.env.CLIENT_URL) {
 	console.error("⚠️ CLIENT_URL is not set in the environment variables.");
 	process.exit(1);
 }
+const clientOrigin = process.env.CLIENT_URL?.replace(/\/+$/, ""); // remove trailing slash
 
-app.use(
-	cors({
-		origin: process.env.CLIENT_URL,
-		credentials: true,
-		optionsSuccessStatus: 200,
-	})
-);
+app.use(cors({
+	origin: clientOrigin,
+	credentials: true,
+	optionsSuccessStatus: 200,
+}));
+
 app.use(express.json());
 app.use(cookieParser());
 
