@@ -11,7 +11,7 @@ const Navbar = () => {
   const navLinks = [
     { to: '/', label: 'Home' },
     { to: '/about', label: 'About' },
-    { to: '/registration', label: 'Register' },
+    { to: '/student-form', label: 'Register' },
     { to: '/contact-us', label: 'Contact' },
   ];
 
