@@ -5,7 +5,7 @@ const developers = [
         role: "CSE B.Tech 2nd Year",
         year: "Main Developer",
         image: "/abhay.jpg",
-        linkedin: "https://www.linkedin.com/in/abhay-kumar-4aa2",
+        linkedin: "https://www.linkedin.com/in/abhay-kumar-4aa26b282",
         isMain: true,
     },
     {
