@@ -1,10 +1,14 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
 import { useAuthStore } from "../store/authStore";
 import { API_BASE_URL } from "../config";
+
 const StudentForm = () => {
   const { user } = useAuthStore();
+  const navigate = useNavigate(); // ✅ Add navigate
 
   const [formData, setFormData] = useState({
     fullName: user?.name || "",
@@ -22,7 +26,7 @@ const StudentForm = () => {
   const [idCardPreview, setIdCardPreview] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const years = ["1st Year", "2nd Year", "3rd Year", "4th Year"];
+  const years = ["1st Year"];
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -37,7 +41,6 @@ const StudentForm = () => {
     }
   };
 
-  // ✅ Upload to backend, which uploads to Cloudinary
   const uploadToCloudinary = async (file) => {
     const formData = new FormData();
     formData.append("image", file);
@@ -48,7 +51,6 @@ const StudentForm = () => {
           "Content-Type": "multipart/form-data",
         },
       });
-
       return response.data.imageUrl;
     } catch (error) {
       console.error("Upload to backend failed:", error.response?.data || error);
@@ -93,6 +95,9 @@ const StudentForm = () => {
       setCollegeIdCard(null);
       setPassportPreview(null);
       setIdCardPreview(null);
+
+      // ✅ Redirect to home page
+      navigate("/");
     } catch (err) {
       console.error(err);
       toast.error(err.response?.data?.message || "Something went wrong!");
