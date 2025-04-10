@@ -83,7 +83,7 @@ const SignUpPage = () => {
           />
           {!isEmailValid && (
             <p className="text-sm text-red-400 -mt-2">
-              Email must start with 2023021 and end with @mmmut.ac.in.
+              Email must start with 2024021 and end with @mmmut.ac.in.
             </p>
           )}
 
