@@ -33,7 +33,7 @@ const SignUpPage = () => {
     }
 
     if (!isMMMUTEmail) {
-      toast.error("Email must start with 2023021 and end with @mmmut.ac.in.");
+      toast.error("Email must start with 2024021 and end with @mmmut.ac.in.");
       return;
     }
 
