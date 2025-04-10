@@ -173,11 +173,10 @@
 // };
 
 // export default Navbar;
-
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
-import { useAuthStore } from '../store/authStore'; // adjust path
+import { useAuthStore } from '../store/authStore'; // Adjust path
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
