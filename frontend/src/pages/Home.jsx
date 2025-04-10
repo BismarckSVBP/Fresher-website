@@ -17,7 +17,8 @@ const staggerContainer = {
 
 const Home = () => {
   return (
-    <div className="min-h-screen bg-[#0f172a] text-white relative overflow-hidden rounded-none">
+    <div className="min-h-screen bg-[#0f172a] text-white relative overflow-hidden rounded-xl">
+
       {/* Floating Bubbles */}
       {[...Array(20)].map((_, i) => (
         <div
