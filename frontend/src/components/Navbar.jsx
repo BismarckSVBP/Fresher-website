@@ -104,7 +104,7 @@ const Navbar = () => {
     }
   }
 
-  const linkClasses = (to: string) =>
+  const linkClasses = (to) =>
     `text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-white transition ${
       location.pathname === to ? 'font-semibold underline underline-offset-4' : ''
     }`;
