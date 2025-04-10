@@ -86,7 +86,7 @@ const About = () => {
                 Meet the Developers
             </h1>
 
-            {/* Main Developer */}
+    
             {mainDev && (
                 <div className="bg-gradient-to-br from-emerald-600 to-green-500 text-white rounded-xl p-8 text-center mb-10 shadow-xl">
                     <div className="w-28 h-28 rounded-full overflow-hidden mx-auto border-4 border-white mb-4">
