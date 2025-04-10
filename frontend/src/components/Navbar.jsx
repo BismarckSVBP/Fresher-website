@@ -104,7 +104,7 @@ const Navbar = () => {
     }
   }
 
-  const linkClasses = (to) =>
+  const linkClasses = (to: string) =>
     `text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-white transition ${
       location.pathname === to ? 'font-semibold underline underline-offset-4' : ''
     }`;
@@ -116,8 +116,8 @@ const Navbar = () => {
           CSE Freshers 2025
         </Link>
 
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center space-x-6">
+        {/* Desktop Menu */}
+        <div className="hidden md:flex space-x-6">
           {navLinks.map((link, index) =>
             link.action ? (
               <button
@@ -128,18 +128,14 @@ const Navbar = () => {
                 {link.label}
               </button>
             ) : (
-              <Link
-                key={link.to}
-                to={link.to}
-                className={linkClasses(link.to)}
-              >
+              <Link key={link.to} to={link.to} className={linkClasses(link.to)}>
                 {link.label}
               </Link>
             )
           )}
         </div>
 
-        {/* Mobile Menu Toggle */}
+        {/* Mobile menu button */}
         <div className="md:hidden">
           <button onClick={toggleMenu} className="text-gray-700 dark:text-gray-300 focus:outline-none">
             {isOpen ? <X size={24} /> : <Menu size={24} />}
