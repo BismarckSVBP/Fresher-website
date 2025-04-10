@@ -18,7 +18,7 @@ const LoginPage = () => {
     try {
       await login(email, password);
       toast.success("Login successful!");
-      navigate("/");
+      navigate("/dashboard");
     } catch (err) {
       console.error(err);
       toast.error("Invalid email or password");
