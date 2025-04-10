@@ -1,28 +1,226 @@
+// // import { create } from "zustand";
+// // import axios from "axios";
+
+// // const API_URL =
+// //   import.meta.env.MODE === "development"
+// //     ? "http://localhost:5000/api/auth"
+// //     : "/api/auth";
+
+// // axios.defaults.withCredentials = true;
+
+// // export const useAuthStore = create((set) => ({
+// //   user: null,
+// //   userEmail: null, // ✅ email used for verification/resend
+// //   isAuthenticated: false,
+// //   error: null,
+// //   isLoading: false,
+// //   isCheckingAuth: true,
+// //   message: null,
+
+// //   setUserEmail: (email) => set({ userEmail: email }), // ✅ function to store email
+
+// //   signup: async (email, password, name) => {
+// //     set({ isLoading: true, error: null });
+// //     try {
+// //       const response = await axios.post(`${API_URL}/signup`, {
+// //         email,
+// //         password,
+// //         name,
+// //       });
+// //       set({
+// //         user: response.data.user,
+// //         isLoading: false,
+// //       });
+// //     } catch (error) {
+// //       set({
+// //         error: error.response?.data?.message || "Error signing up",
+// //         isLoading: false,
+// //       });
+// //       throw error;
+// //     }
+// //   },
+
+// //   resendOTP: async (email) => {
+// //     set({ isLoading: true, error: null });
+// //     try {
+// //       const response = await axios.post(`${API_URL}/resend-otp`, { email });
+// //       set({
+// //         message: response.data.message || "OTP resent successfully",
+// //         isLoading: false,
+// //       });
+// //       return response.data;
+// //     } catch (error) {
+// //       set({
+// //         error: error.response?.data?.message || "Error resending OTP",
+// //         isLoading: false,
+// //       });
+// //       throw error;
+// //     }
+// //   },
+
+// //   verifyEmail: async (code) => {
+// //     set({ isLoading: true, error: null });
+// //     try {
+// //       const response = await axios.post(`${API_URL}/verify-email`, { code });
+// //       set({
+// //         user: response.data.user,
+// //         isAuthenticated: true,
+// //         isLoading: false,
+// //       });
+// //       return response.data;
+// //     } catch (error) {
+// //       set({
+// //         error: error.response?.data?.message || "Error verifying email",
+// //         isLoading: false,
+// //       });
+// //       throw error;
+// //     }
+// //   },
+
+// //   login: async (email, password) => {
+// //     set({ isLoading: true, error: null });
+// //     try {
+// //       const response = await axios.post(`${API_URL}/login`, {
+// //         email,
+// //         password,
+// //       });
+// //       set({
+// //         isAuthenticated: true,
+// //         user: response.data.user,
+// //         error: null,
+// //         isLoading: false,
+// //       });
+// //     } catch (error) {
+// //       set({
+// //         error: error.response?.data?.message || "Error logging in",
+// //         isLoading: false,
+// //       });
+// //       throw error;
+// //     }
+// //   },
+
+// //   logout: async () => {
+// //     set({ isLoading: true, error: null });
+// //     try {
+// //       await axios.post(`${API_URL}/logout`);
+// //       set({
+// //         user: null,
+// //         isAuthenticated: false,
+// //         error: null,
+// //         isLoading: false,
+// //         userEmail: null,
+// //       });
+// //     } catch (error) {
+// //       set({ error: "Error logging out", isLoading: false });
+// //       throw error;
+// //     }
+// //   },
+
+// //   checkAuth: async () => {
+// //     set({ isCheckingAuth: true, error: null });
+// //     try {
+// //       const response = await axios.get(`${API_URL}/check-auth`);
+// //       set({
+// //         user: response.data.user,
+// //         isAuthenticated: true,
+// //         isCheckingAuth: false,
+// //       });
+// //     } catch (error) {
+// //       set({ error: null, isCheckingAuth: false, isAuthenticated: false });
+// //     }
+// //   },
+
+// //   forgotPassword: async (email) => {
+// //     set({ isLoading: true, error: null });
+// //     try {
+// //       const response = await axios.post(`${API_URL}/forgot-password`, {
+// //         email,
+// //       });
+// //       set({ message: response.data.message, isLoading: false });
+// //     } catch (error) {
+// //       set({
+// //         isLoading: false,
+// //         error:
+// //           error.response?.data?.message || "Error sending reset password email",
+// //       });
+// //       throw error;
+// //     }
+// //   },
+
+// //   resetPassword: async (token, password) => {
+// //     set({ isLoading: true, error: null });
+// //     try {
+// //       const response = await axios.post(`${API_URL}/reset-password/${token}`, {
+// //         password,
+// //       });
+// //       set({ message: response.data.message, isLoading: false });
+// //     } catch (error) {
+// //       set({
+// //         isLoading: false,
+// //         error: error.response?.data?.message || "Error resetting password",
+// //       });
+// //       throw error;
+// //     }
+// //   },
+// // }));
+
+// // export const useContactStore = create((set) => ({
+// //   error: null,
+// //   isLoading: false,
+// //   message: null,
+
+// //   contactUs: async (email, name, message) => {
+// //     set({ isLoading: true, error: null, message: null });
+
+// //     try {
+// //       const response = await axios.post(`${API_URL}/contact-us`, {
+// //         email,
+// //         name,
+// //         message,
+// //       });
+
+// //       set({
+// //         message: response.data.message || "Query sent successfully!",
+// //         isLoading: false,
+// //       });
+
+// //       return response.data;
+// //     } catch (error) {
+// //       console.error("ContactUs Error:", error);
+// //       set({
+// //         error: error.response?.data?.message || "Error sending query",
+// //         isLoading: false,
+// //       });
+
+// //       throw error;
+// //     }
+// //   },
+// // }));
+
+
 // import { create } from "zustand";
 // import axios from "axios";
 
-// const API_URL =
-//   import.meta.env.MODE === "development"
-//     ? "http://localhost:5000/api/auth"
-//     : "/api/auth";
+// import { API_BASE_URL } from "../config";
 
 // axios.defaults.withCredentials = true;
 
+// // ✅ Auth Store
 // export const useAuthStore = create((set) => ({
 //   user: null,
-//   userEmail: null, // ✅ email used for verification/resend
+//   userEmail: null,
 //   isAuthenticated: false,
 //   error: null,
 //   isLoading: false,
 //   isCheckingAuth: true,
 //   message: null,
 
-//   setUserEmail: (email) => set({ userEmail: email }), // ✅ function to store email
+//   setUserEmail: (email) => set({ userEmail: email }),
 
 //   signup: async (email, password, name) => {
 //     set({ isLoading: true, error: null });
 //     try {
-//       const response = await axios.post(`${API_URL}/signup`, {
+//       const response = await axios.post(`${API_BASE_URL}/signup`, {
 //         email,
 //         password,
 //         name,
@@ -43,7 +241,7 @@
 //   resendOTP: async (email) => {
 //     set({ isLoading: true, error: null });
 //     try {
-//       const response = await axios.post(`${API_URL}/resend-otp`, { email });
+//       const response = await axios.post(`${API_BASE_URL}/resend-otp`, { email });
 //       set({
 //         message: response.data.message || "OTP resent successfully",
 //         isLoading: false,
@@ -61,7 +259,7 @@
 //   verifyEmail: async (code) => {
 //     set({ isLoading: true, error: null });
 //     try {
-//       const response = await axios.post(`${API_URL}/verify-email`, { code });
+//       const response = await axios.post(`${API_BASE_URL}/verify-email`, { code });
 //       set({
 //         user: response.data.user,
 //         isAuthenticated: true,
@@ -80,7 +278,7 @@
 //   login: async (email, password) => {
 //     set({ isLoading: true, error: null });
 //     try {
-//       const response = await axios.post(`${API_URL}/login`, {
+//       const response = await axios.post(`${API_BASE_URL}/login`, {
 //         email,
 //         password,
 //       });
@@ -102,7 +300,7 @@
 //   logout: async () => {
 //     set({ isLoading: true, error: null });
 //     try {
-//       await axios.post(`${API_URL}/logout`);
+//       await axios.post(`${API_BASE_URL}/logout`);
 //       set({
 //         user: null,
 //         isAuthenticated: false,
@@ -119,7 +317,7 @@
 //   checkAuth: async () => {
 //     set({ isCheckingAuth: true, error: null });
 //     try {
-//       const response = await axios.get(`${API_URL}/check-auth`);
+//       const response = await axios.get(`${API_BASE_URL}/check-auth`);
 //       set({
 //         user: response.data.user,
 //         isAuthenticated: true,
@@ -133,7 +331,7 @@
 //   forgotPassword: async (email) => {
 //     set({ isLoading: true, error: null });
 //     try {
-//       const response = await axios.post(`${API_URL}/forgot-password`, {
+//       const response = await axios.post(`${API_BASE_URL}/forgot-password`, {
 //         email,
 //       });
 //       set({ message: response.data.message, isLoading: false });
@@ -150,7 +348,7 @@
 //   resetPassword: async (token, password) => {
 //     set({ isLoading: true, error: null });
 //     try {
-//       const response = await axios.post(`${API_URL}/reset-password/${token}`, {
+//       const response = await axios.post(`${API_BASE_URL}/reset-password/${token}`, {
 //         password,
 //       });
 //       set({ message: response.data.message, isLoading: false });
@@ -164,6 +362,7 @@
 //   },
 // }));
 
+// // ✅ Contact Store
 // export const useContactStore = create((set) => ({
 //   error: null,
 //   isLoading: false,
@@ -173,7 +372,7 @@
 //     set({ isLoading: true, error: null, message: null });
 
 //     try {
-//       const response = await axios.post(`${API_URL}/contact-us`, {
+//       const response = await axios.post(`${API_BASE_URL}/contact-us`, {
 //         email,
 //         name,
 //         message,
@@ -196,16 +395,12 @@
 //     }
 //   },
 // }));
-
-
 import { create } from "zustand";
 import axios from "axios";
-
 import { API_BASE_URL } from "../config";
 
 axios.defaults.withCredentials = true;
 
-// ✅ Auth Store
 export const useAuthStore = create((set) => ({
   user: null,
   userEmail: null,
@@ -220,15 +415,12 @@ export const useAuthStore = create((set) => ({
   signup: async (email, password, name) => {
     set({ isLoading: true, error: null });
     try {
-      const response = await axios.post(`${API_BASE_URL}/signup`, {
+      const { data } = await axios.post(`${API_BASE_URL}/signup`, {
         email,
         password,
         name,
       });
-      set({
-        user: response.data.user,
-        isLoading: false,
-      });
+      set({ user: data.user, isLoading: false });
     } catch (error) {
       set({
         error: error.response?.data?.message || "Error signing up",
@@ -241,12 +433,9 @@ export const useAuthStore = create((set) => ({
   resendOTP: async (email) => {
     set({ isLoading: true, error: null });
     try {
-      const response = await axios.post(`${API_BASE_URL}/resend-otp`, { email });
-      set({
-        message: response.data.message || "OTP resent successfully",
-        isLoading: false,
-      });
-      return response.data;
+      const { data } = await axios.post(`${API_BASE_URL}/resend-otp`, { email });
+      set({ message: data.message || "OTP resent successfully", isLoading: false });
+      return data;
     } catch (error) {
       set({
         error: error.response?.data?.message || "Error resending OTP",
@@ -259,13 +448,13 @@ export const useAuthStore = create((set) => ({
   verifyEmail: async (code) => {
     set({ isLoading: true, error: null });
     try {
-      const response = await axios.post(`${API_BASE_URL}/verify-email`, { code });
+      const { data } = await axios.post(`${API_BASE_URL}/verify-email`, { code });
       set({
-        user: response.data.user,
+        user: data.user,
         isAuthenticated: true,
         isLoading: false,
       });
-      return response.data;
+      return data;
     } catch (error) {
       set({
         error: error.response?.data?.message || "Error verifying email",
@@ -278,14 +467,13 @@ export const useAuthStore = create((set) => ({
   login: async (email, password) => {
     set({ isLoading: true, error: null });
     try {
-      const response = await axios.post(`${API_BASE_URL}/login`, {
+      const { data } = await axios.post(`${API_BASE_URL}/login`, {
         email,
         password,
       });
       set({
+        user: data.user,
         isAuthenticated: true,
-        user: response.data.user,
-        error: null,
         isLoading: false,
       });
     } catch (error) {
@@ -303,13 +491,16 @@ export const useAuthStore = create((set) => ({
       await axios.post(`${API_BASE_URL}/logout`);
       set({
         user: null,
-        isAuthenticated: false,
-        error: null,
-        isLoading: false,
         userEmail: null,
+        isAuthenticated: false,
+        isLoading: false,
+        error: null,
       });
     } catch (error) {
-      set({ error: "Error logging out", isLoading: false });
+      set({
+        error: "Error logging out",
+        isLoading: false,
+      });
       throw error;
     }
   },
@@ -317,29 +508,30 @@ export const useAuthStore = create((set) => ({
   checkAuth: async () => {
     set({ isCheckingAuth: true, error: null });
     try {
-      const response = await axios.get(`${API_BASE_URL}/check-auth`);
+      const { data } = await axios.get(`${API_BASE_URL}/check-auth`);
       set({
-        user: response.data.user,
+        user: data.user,
         isAuthenticated: true,
         isCheckingAuth: false,
       });
     } catch (error) {
-      set({ error: null, isCheckingAuth: false, isAuthenticated: false });
+      set({
+        isAuthenticated: false,
+        isCheckingAuth: false,
+        error: null,
+      });
     }
   },
 
   forgotPassword: async (email) => {
     set({ isLoading: true, error: null });
     try {
-      const response = await axios.post(`${API_BASE_URL}/forgot-password`, {
-        email,
-      });
-      set({ message: response.data.message, isLoading: false });
+      const { data } = await axios.post(`${API_BASE_URL}/forgot-password`, { email });
+      set({ message: data.message, isLoading: false });
     } catch (error) {
       set({
+        error: error.response?.data?.message || "Error sending reset password email",
         isLoading: false,
-        error:
-          error.response?.data?.message || "Error sending reset password email",
       });
       throw error;
     }
@@ -348,14 +540,14 @@ export const useAuthStore = create((set) => ({
   resetPassword: async (token, password) => {
     set({ isLoading: true, error: null });
     try {
-      const response = await axios.post(`${API_BASE_URL}/reset-password/${token}`, {
+      const { data } = await axios.post(`${API_BASE_URL}/reset-password/${token}`, {
         password,
       });
-      set({ message: response.data.message, isLoading: false });
+      set({ message: data.message, isLoading: false });
     } catch (error) {
       set({
-        isLoading: false,
         error: error.response?.data?.message || "Error resetting password",
+        isLoading: false,
       });
       throw error;
     }
@@ -370,27 +562,23 @@ export const useContactStore = create((set) => ({
 
   contactUs: async (email, name, message) => {
     set({ isLoading: true, error: null, message: null });
-
     try {
-      const response = await axios.post(`${API_BASE_URL}/contact-us`, {
+      const { data } = await axios.post(`${API_BASE_URL}/contact-us`, {
         email,
         name,
         message,
       });
-
       set({
-        message: response.data.message || "Query sent successfully!",
+        message: data.message || "Query sent successfully!",
         isLoading: false,
       });
-
-      return response.data;
+      return data;
     } catch (error) {
       console.error("ContactUs Error:", error);
       set({
         error: error.response?.data?.message || "Error sending query",
         isLoading: false,
       });
-
       throw error;
     }
   },
