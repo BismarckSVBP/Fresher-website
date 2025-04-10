@@ -1,3 +1,8 @@
+
+
+
+
+
 import { motion } from "framer-motion";
 import Input from "../components/Input";
 import { Loader, Lock, Mail, User } from "lucide-react";
@@ -15,7 +20,6 @@ const SignUpPage = () => {
   const navigate = useNavigate();
 
   const { signup, error, isLoading, setUserEmail } = useAuthStore();
-
   useEffect(() => {
     if (error) {
       toast.error(error);
