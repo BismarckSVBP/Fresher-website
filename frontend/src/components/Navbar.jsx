@@ -70,7 +70,7 @@
 import { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
-import { useAuthStore } from '../store/authStore'; // adjust path if needed
+import { useAuthStore } from '../store/authStore'; // Adjust path if needed
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -104,10 +104,11 @@ const Navbar = () => {
     }
   }
 
-  const linkClasses = (to) =>
-    `text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-white transition ${
+  const linkClasses = (to) => {
+    return `text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-white transition ${
       location.pathname === to ? 'font-semibold underline underline-offset-4' : ''
     }`;
+  };
 
   return (
     <nav className="bg-white dark:bg-gray-900 shadow-md sticky top-0 z-50">
