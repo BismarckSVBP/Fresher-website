@@ -25,7 +25,7 @@ const SignUpPage = () => {
   const handleSignUp = async (e) => {
     e.preventDefault();
 
-    const isMMMUTEmail = /^2023021[a-zA-Z0-9._%+-]*@mmmut\.ac\.in$/.test(email);
+    const isMMMUTEmail = /^2024021[a-zA-Z0-9._%+-]*@mmmut\.ac\.in$/.test(email);
     setIsEmailValid(isMMMUTEmail);
 
     if (!name || !email || !password || name.length < 4 || password.length < 6) {
@@ -77,7 +77,7 @@ const SignUpPage = () => {
             onChange={(e) => {
               const val = e.target.value;
               setEmail(val);
-              setIsEmailValid(/^2023021[a-zA-Z0-9._%+-]*@mmmut\.ac\.in$/.test(val));
+              setIsEmailValid(/^2024021[a-zA-Z0-9._%+-]*@mmmut\.ac\.in$/.test(val));
             }}
             className={!isEmailValid ? "border-red-500 focus:ring-red-500" : ""}
           />
