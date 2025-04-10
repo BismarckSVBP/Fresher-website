@@ -1,16 +1,41 @@
 import { motion } from "framer-motion";
 import { useAuthStore } from "../store/authStore";
-import { formatDate } from "../utils/date";
+import { formatDate } from "../utils/date"; // Ensure this utility exists and works
 import { toast } from "react-hot-toast";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom"; // Added useNavigate for redirection
+import { useEffect } from "react"; // Added for auth check
 
 const DashboardPage = () => {
-  const { user, logout } = useAuthStore();
+  const { user, logout, isAuthenticated, isCheckingAuth } = useAuthStore();
+  const navigate = useNavigate(); // For redirecting after logout or if unauthenticated
+
+  // Redirect to login if not authenticated
+  useEffect(() => {
+    if (!isCheckingAuth && !isAuthenticated) {
+      toast.error("Please log in to access the dashboard");
+      navigate("/login");
+    }
+  }, [isAuthenticated, isCheckingAuth, navigate]);
 
   const handleLogout = () => {
     toast.success("Logged out successfully");
     logout();
+    navigate("/login"); // Redirect to login page after logout
   };
+
+  // Show a loading state while checking authentication
+  if (isCheckingAuth) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <p className="text-gray-300 text-xl">Loading...</p>
+      </div>
+    );
+  }
+
+  // If user is null or undefined, don't render the dashboard content
+  if (!user) {
+    return null; // This won't be reached due to the useEffect redirect, but added as a safeguard
+  }
 
   return (
     <motion.div
@@ -34,8 +59,8 @@ const DashboardPage = () => {
           <h3 className="text-xl font-semibold text-green-400 mb-3">
             Profile Information
           </h3>
-          <p className="text-gray-300">Name: {user.name}</p>
-          <p className="text-gray-300">Email: {user.email}</p>
+          <p className="text-gray-300">Name: {user.name || "N/A"}</p>
+          <p className="text-gray-300">Email: {user.email || "N/A"}</p>
         </motion.div>
 
         <motion.div
@@ -49,15 +74,17 @@ const DashboardPage = () => {
           </h3>
           <p className="text-gray-300">
             <span className="font-bold">Joined: </span>
-            {new Date(user.createdAt).toLocaleDateString("en-US", {
-              year: "numeric",
-              month: "long",
-              day: "numeric",
-            })}
+            {user.createdAt
+              ? new Date(user.createdAt).toLocaleDateString("en-US", {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })
+              : "N/A"}
           </p>
           <p className="text-gray-300">
             <span className="font-bold">Last Login: </span>
-            {formatDate(user.lastLogin)}
+            {user.lastLogin ? formatDate(user.lastLogin) : "N/A"}
           </p>
         </motion.div>
       </div>
