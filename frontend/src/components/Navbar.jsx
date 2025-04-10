@@ -135,7 +135,7 @@ const Navbar = () => {
           )}
         </div>
 
-        {/* Mobile menu button */}
+        {/* Mobile Menu Button */}
         <div className="md:hidden">
           <button onClick={toggleMenu} className="text-gray-700 dark:text-gray-300 focus:outline-none">
             {isOpen ? <X size={24} /> : <Menu size={24} />}
