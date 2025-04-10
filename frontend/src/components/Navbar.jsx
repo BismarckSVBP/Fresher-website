@@ -70,7 +70,7 @@
 import { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
-import { useAuthStore } from '../store/authStore'; // Adjust path if needed
+import { useAuthStore } from '../store/authStore'; // adjust path if needed
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -104,11 +104,10 @@ const Navbar = () => {
     }
   }
 
-  const linkClasses = (to) => {
-    return `text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-white transition ${
+  const linkClasses = (to) =>
+    `text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-white transition ${
       location.pathname === to ? 'font-semibold underline underline-offset-4' : ''
     }`;
-  };
 
   return (
     <nav className="bg-white dark:bg-gray-900 shadow-md sticky top-0 z-50">
@@ -146,7 +145,7 @@ const Navbar = () => {
 
       {/* Mobile Dropdown */}
       {isOpen && (
-        <div className="md:hidden px-4 pb-4 space-y-2">
+        <div className="md:hidden bg-white dark:bg-gray-900 shadow-md px-4 py-3 space-y-3 border-t border-gray-200 dark:border-gray-700">
           {navLinks.map((link, index) =>
             link.action ? (
               <button
@@ -161,7 +160,7 @@ const Navbar = () => {
                 key={link.to}
                 to={link.to}
                 onClick={() => setIsOpen(false)}
-                className={linkClasses(link.to)}
+                className="block w-full text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-white font-medium transition"
               >
                 {link.label}
               </Link>
@@ -174,3 +173,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
